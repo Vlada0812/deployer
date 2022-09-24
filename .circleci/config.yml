@@ -35,6 +35,7 @@ jobs:
        export DOCKER_REPO="$dr"
        EOF
 
+   - run: rm -rf "${GOPATH_BASE}/"
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH_HEAD}/bin"
    - run: go get github.com/govend/govend
