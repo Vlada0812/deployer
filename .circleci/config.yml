@@ -38,7 +38,6 @@ jobs:
 
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH_HEAD}/bin"
-   - run: cp -r ${HOME}/${CIRCLE_PROJECT_REPONAME} ${GOPATH_BASE}/
    - run: go get github.com/govend/govend
        
    - run:
@@ -46,6 +45,16 @@ jobs:
       command: |
           go test \
           github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+    
+   - run:
+      name: Build the application
+      command: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            docker login -u ${DOCKER_USER} -p ${DOCKER_PASS};
+            go install --ldflags '-extldflags "-static"' \
+            github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME};
+            mkdir bin;
+          fi
 
   machine:
     environment:
