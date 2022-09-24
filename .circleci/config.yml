@@ -39,7 +39,7 @@ jobs:
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH_HEAD}/bin"
    - run: go get github.com/govend/govend
-   - run: cat /etc/os-release
+   - run: sudo apt update
        
   #  - run:
   #     name: Testing application
