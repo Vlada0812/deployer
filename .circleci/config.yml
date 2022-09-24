@@ -41,6 +41,7 @@ jobs:
    - run: go get github.com/govend/govend
    - run: sudo apt update
    - run: sudo apt upgrade
+   - run: sudo apt install --assume-yes awscli
        
   #  - run:
   #     name: Testing application
