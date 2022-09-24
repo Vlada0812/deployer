@@ -38,6 +38,7 @@ jobs:
 
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH_HEAD}/bin"
+   - run: cp -r ${HOME}/${CIRCLE_PROJECT_REPONAME} ${GOPATH_BASE}/
    - run: go get github.com/govend/govend
        
    - run:
