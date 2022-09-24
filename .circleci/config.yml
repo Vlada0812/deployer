@@ -40,8 +40,14 @@ jobs:
   #  - run: cp -r /$CIRCLE_PROJECT_REPONAME ${GOPATH_BASE}/
    - run: go get github.com/govend/govend
   # - run: sudo apt-get upgrade -y
-   - run: sudo apt install python3-pip
-   - run: sudo pip install awscli
+  #  - run: sudo apt install python3-pip
+  #  - run: sudo pip install awscli
+
+   - run:
+      name: Testing application
+      command: |
+          go test \
+          github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
 
   machine:
     environment:
