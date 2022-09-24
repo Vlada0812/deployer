@@ -9,14 +9,16 @@
 version: 2
 jobs:
  build:
-  # working_directory: /go/src/github.com/Vlada0812/deployer
+  # Variable expansion in working_directory not supported at this time
+  # You will need to modify the code below to reflect your github account/repo setup
+  working_directory: /go/src/github.com/Vlada0812/deployer
   docker:
    - image: circleci/golang:1.10
   steps:
    - checkout
    - setup_remote_docker
 
-   - run:
+   - run: 
       name: Setup environment
       command: |
        gb="/src/github.com/${CIRCLE_PROJECT_USERNAME}";
@@ -30,19 +32,13 @@ jobs:
        cat >> $BASH_ENV << EOF
        export GOPATH_HEAD="$(echo ${GOPATH}|cut -d ':' -f 1)"
        export GOPATH_BASE="$(echo ${GOPATH}|cut -d ':' -f 1)${gb}"
-       export GO15VENDOREXPERIMENT="1"
        export DOCKER_REPO="$dr"
        EOF
 
-   - run: rm -rf "${GOPATH_BASE}/"
    - run: mkdir -p "${GOPATH_BASE}"
-   - run: mkdir -p "${GOPATH}/bin"
-  #  - run: cp -r /$CIRCLE_PROJECT_REPONAME ${GOPATH_BASE}/
+   - run: mkdir -p "${GOPATH_HEAD}/bin"
    - run: go get github.com/govend/govend
-  # - run: sudo apt-get upgrade -y
-  #  - run: sudo apt install python3-pip
-  #  - run: sudo pip install awscli
-
+       
    - run:
       name: Testing application
       command: |
