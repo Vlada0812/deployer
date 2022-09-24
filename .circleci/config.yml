@@ -37,7 +37,7 @@ jobs:
    - run: rm -rf "${GOPATH_BASE}/"
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH}/bin"
-   - run: cp -r /$CIRCLE_PROJECT_REPONAME ${GOPATH_BASE}/
+  #  - run: cp -r /$CIRCLE_PROJECT_REPONAME ${GOPATH_BASE}/
    - run: go get github.com/govend/govend
    - run: sudo pip install awscli
 
