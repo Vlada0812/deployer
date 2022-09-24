@@ -45,8 +45,8 @@ jobs:
    - run: mkdir .aws
    - run: ls -la /home/circleci
   
-  #  - run: echo "[default]" > ~/.aws/config
-  #  - run: echo "region = ${AWS_REGION}" >> ~/.aws/config
+   - run: echo "[default]" > ~/.aws/config
+   - run: echo "region = ${AWS_REGION}" >> ~/.aws/config
        
   #  - run:
   #     name: Testing application
