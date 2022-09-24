@@ -60,6 +60,7 @@ jobs:
             docker images --no-trunc | awk '/^app/ {print $3}' | \
               sudo tee $CIRCLE_ARTIFACTS/docker-image-shasum256.txt;
             docker push ${DOCKER_REPO}/${CIRCLE_PROJECT_REPONAME};
+            aws elasticbeanstalk update-environment --region us-east-1 --application-name deployer20220921 --environment-id e-5ngpxzbqwa --version-label deployer-api
           fi
 
   machine:
