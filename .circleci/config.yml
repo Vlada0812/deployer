@@ -34,6 +34,9 @@ jobs:
        export DOCKER_REPO="$dr"
        EOF
 
+   - run: rm -rf "${GOPATH_BASE}/"
+   - run: mkdir -p "${GOPATH_BASE}"
+
   machine:
     environment:
       GOPATH_HEAD: "$(echo $GOPATH | cut -d ':' -f 1)"
