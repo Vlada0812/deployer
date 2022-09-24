@@ -40,6 +40,7 @@ jobs:
    - run: mkdir -p "${GOPATH_HEAD}/bin"
    - run: go get github.com/govend/govend
    - run: sudo apt update
+   - run: sudo apt upgrade
        
   #  - run:
   #     name: Testing application
