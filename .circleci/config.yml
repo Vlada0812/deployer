@@ -39,7 +39,7 @@ jobs:
    - run: mkdir -p "${GOPATH}/bin"
   #  - run: cp -r /$CIRCLE_PROJECT_REPONAME ${GOPATH_BASE}/
    - run: go get github.com/govend/govend
-   - run: sudo apt-get upgrade -y
+  # - run: sudo apt-get upgrade -y
    - run: sudo apt install python3-pip
    - run: sudo pip install awscli
 
