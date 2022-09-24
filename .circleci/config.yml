@@ -9,7 +9,7 @@
 version: 2
 jobs:
  build:
-  working_directory: /go/src/github.com/Vlada0812/deployer
+  # working_directory: /go/src/github.com/Vlada0812/deployer
   docker:
    - image: circleci/golang:1.10
   steps:
