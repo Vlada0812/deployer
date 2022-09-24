@@ -42,6 +42,7 @@ jobs:
    - run: sudo apt update
    - run: sudo apt upgrade
    - run: sudo apt install --assume-yes awscli
+   - run: mkdir .aws
    - run: ls -la /home/circleci
   
   #  - run: echo "[default]" > ~/.aws/config
