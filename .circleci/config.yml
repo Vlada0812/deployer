@@ -52,8 +52,8 @@ jobs:
    - run: 
       name: configure aws cli
       command: |
-         echo "[default]" > ~/.aws/config
-        #  echo "region = ${AWS_REGION}" >> ~/.aws/config;
+         echo "[default]" > ~/.aws/config;
+         echo "region = ${AWS_REGION}" >> ~/.aws/config;
        
   #  - run:
   #     name: Testing application
