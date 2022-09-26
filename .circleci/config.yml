@@ -39,14 +39,19 @@ jobs:
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH_HEAD}/bin"
    - run: go get github.com/govend/govend
-   - run: sudo apt update
-   - run: sudo apt upgrade
-   - run: sudo apt install --assume-yes awscli
-   - run: cd ~/ && mkdir .aws && pwd
-   - run: cd ~/.aws && touch config
+   - run:
+      name: install aws cli 
+      commadn: sudo apt update && sudo apt upgrade && sudo apt install --assume-yes awscli
+   - run: 
+      name: Creating aws config file
+      command: cd ~/ && mkdir .aws && cd ~/.aws && touch config
+
   
-   - run: echo "[default]" > ~/.aws/config
-   - run: echo "region = ${AWS_REGION}" >> ~/.aws/config
+   - run: 
+      name: configure aws cli
+      command: |
+         echo "[default]" > ~/.aws/config;
+         echo "region = ${AWS_REGION}" >> ~/.aws/config;
        
   #  - run:
   #     name: Testing application
